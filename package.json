@@ -1,0 +1,33 @@
+{
+  "name": "honestswap-website",
+  "version": "0.0.1",
+  "description": "HonestSwap website project",
+  "main": "index.ts",
+  "repository": "https://github.com/honestnode/honestswap-website",
+  "author": "HonestSwap Team",
+  "license": "LGPL-3.0-or-later",
+  "bin": {
+    "webpack": ".bin/webpack-cli"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --open --config ./webpack/webpack.dev.js",
+    "sandbox": "webpack-cli -p --config ./webpack/webpack.sandbox.js",
+    "build": "webpack-cli -p --config ./webpack/webpack.prod.js"
+  },
+  "devDependencies": {
+    "@babel/core": "7.11.6",
+    "@babel/plugin-transform-runtime": "7.11.5",
+    "@babel/preset-env": "7.11.5",
+    "@babel/preset-react": "7.10.4",
+    "@babel/preset-typescript": "7.10.4",
+    "babel-loader": "8.1.0",
+    "clean-webpack-plugin": "3.0.0",
+    "copy-webpack-plugin": "6.1.1",
+    "html-webpack-plugin": "4.5.0",
+    "terser-webpack-plugin": "4.2.2",
+    "typescript": "4.0.3",
+    "webpack": "4.44.2",
+    "webpack-cli": "3.3.12",
+    "webpack-dev-server": "3.11.0"
+  }
+}

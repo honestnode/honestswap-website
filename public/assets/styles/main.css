@@ -12,9 +12,14 @@ body {
 }
 
 #root img {
-    width: 1440px;
-    height: 900px;
     display: block;
     overflow: hidden;
-    margin: 0 auto;
+    margin: 240px auto 0 auto;
+}
+
+#root.pc img {
+}
+
+#root.mobile img {
+    width: 70%;
 }

@@ -1,8 +1,6 @@
-# HonestSwap App
+# HonestSwap Website
 
-A web app for interacting with the HonestSwap contracts.
-
-SPA project bundled with React.
+The website of the HonestSwap.
 
 ## Installation
 

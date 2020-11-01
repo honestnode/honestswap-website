@@ -22,7 +22,7 @@ export const ContractContextProvider: FC = props => {
       setTimeout(() => {
         resolve({
           honestAsset: '1,403,563,535',
-          basketAssets: {'dai': 0, 'tusd': 0.1, 'usdc': 0.3, 'usdt': 0.6}
+          basketAssets: {'dai': 1,'usdt': 0.25,'usdc': 0.5, 'tusd': 0.75 }
         });
       }, 3000)
     );

@@ -3,9 +3,9 @@ import { createUseStyles } from "react-jss";
 import { HonestTheme, theme } from "../config";
 import { ComponentProps } from "./common";
 import { ContractContextProvider, useContract } from "../context";
-import {LoaderItem} from './loader'
+import { LoaderItem } from "./loader";
 
-export interface PoolshareProps extends ComponentProps {}
+
 
 const useStyles = createUseStyles<HonestTheme>((theme) => ({
 	root: {
@@ -25,14 +25,46 @@ const useStyles = createUseStyles<HonestTheme>((theme) => ({
 		textAlign: "center",
 	},
 
-	percentTxt:{
+	percentTxt: {
 		display: "block",
 		marginTop: `${theme.spacing(4)}pt`,
-		fontSize:'14pt'
+		fontSize: "14pt",
 	},
 }));
 
-export const Poolshare: React.FC<PoolshareProps> = (props) => {
+const loadingStyles = createUseStyles<HonestTheme>((theme) => ({
+	"@keyframes breathe": {
+		"0%": {
+			opacity:'0.3'
+		},
+		"50%":{
+			opacity:'0'
+		},
+		"100%":{
+			opacity:'0.3'
+		}
+	},
+	loadingBorder:{
+		width: `${theme.spacing(14)}pt`,
+		height: `${theme.spacing(14)}pt`,
+		margin: "0 auto",
+		borderRadius:'50%',
+		background:props=>theme.palette.token(props.text),
+		boxShadow:props=>`0 0 15px ${theme.palette.token(props.text)}`,
+		animation: '$breathe 3s linear infinite'
+	},
+	loading:{
+		width: `${theme.spacing(12)}pt`,
+		height: `${theme.spacing(12)}pt`,
+		margin: "0 auto",
+		borderRadius:'50%',
+		background:props=>theme.palette.token(props.text),
+		marginTop:`${theme.spacing(-13)}pt`,
+	},
+	
+}))
+
+export const Poolshare: React.FC = () => {
 	return (
 		<ContractContextProvider>
 			<Content />
@@ -56,10 +88,15 @@ const Item: React.FC<ItemProps> = (props) => {
 
 	return (
 		<div className={className}>
-			<LoaderItem type={""} text={text} percentage={percentage} idx={0}/>
-			<LoaderItem type={"border"} text={text} percentage={percentage} idx={1}/>
-			<LoaderItem type={"border"} text={text} percentage={percentage} idx={2}/>
-			<LoaderItem type={"border"} text={text} percentage={percentage} idx={3}/>
+			{[0, 1, 2, 3].map((num) => (
+				<LoaderItem
+					key={num}
+					type={num >= 1 ? "border" : ""}
+					text={text}
+					percentage={percentage}
+					idx={num}
+				/>
+			))}
 			<label
 				className={classes.percentTxt}
 				style={{
@@ -78,37 +115,62 @@ const Item: React.FC<ItemProps> = (props) => {
 				<img
 					className={classes.icon}
 					src={`/assets/imgs/${text}.svg`}
-					alt={"MetaMask"}
+					alt={"icon"}
 				/>
 			</div>
 		</div>
 	);
 };
 
+
+interface LoadingItemProps extends ComponentProps {
+	text: string;
+}
+
+const LoadingItem: React.FC<LoadingItemProps> = (props) => {
+	const { className} = props;
+	const classes = loadingStyles(props);
+	
+	return (
+		<div className={className}>
+			<div className={classes.loadingBorder} ></div>
+			<div className={classes.loading} ></div>
+		</div>
+	);
+};
+
 const Content: FC = () => {
-	const classes = useStyles();
-	const title = "Current Pool Share";
-	const contract = useContract();
+	const classes = useStyles(),
+		title = "Current Pool Share",
+		contract = useContract(),
+		baskets = ["dai", "usdt", "usdc", "tusd"];
 	return (
 		<div>
-			{contract.loading ? (
-				<p>Loading...</p>
-			) : (
-				<div className={classes.root}>
-					<div className={classes.title}>{title}</div>
-					<ul className={classes.ul}>
-						{Object.entries(contract.basketAssets).map(
-							([key, percentage]) => (
-								<Item
-									key={key}
-									className={classes.li}
-									text={key}
-									percentage={percentage}></Item>
-							)
-						)}
-					</ul>
-				</div>
-			)}
+			<div className={classes.root}>
+				<div className={classes.title}>{title}</div>
+
+				<ul className={classes.ul}>
+					{contract.loading ? (
+						<li>
+						{baskets.map(key=>(
+							<LoadingItem key={key} className={classes.li} text={key}/>
+						))}
+						</li>
+					) : (
+						<li>
+							{Object.entries(contract.basketAssets).map(
+								([key, percentage]) => (
+									<Item
+										key={key}
+										className={classes.li}
+										text={key}
+										percentage={percentage}></Item>
+								)
+							)}
+						</li>
+					)}
+				</ul>
+			</div>
 		</div>
 	);
 };

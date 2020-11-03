@@ -47,24 +47,26 @@ const useStyles = createUseStyles<HonestTheme>((theme) => ({
     marginTop: `${theme.spacing(12)}pt`,
     width: `${theme.spacing(28)}pt`,
     height: `${theme.spacing(7)}pt`,
-
+    lineHeight: `${theme.spacing(7)}pt`,
     borderRadius: `${theme.spacing(7)}pt`,
     border: `3px solid ${theme.palette.textBlue}`,
+    boxSizing:'content-box',
     color: theme.palette.text,
     textAlign: 'center',
     fontSize: '26pt',
+    background:'url("/assets/imgs/next.png") 70% center no-repeat',
     '&:hover': {
       backgroundColor: theme.palette.textBlue,
       color: '#fff',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      background:'url("/assets/imgs/next-white.svg")70% center no-repeat'
     }
   },
-  btnContent: {
-    display: 'inline-block',
-    verticalAlign: 'middle',
-    margin: '0 8pt',
-    lineHeight: `${theme.spacing(7)}pt`
+  btnTxt:{
+    display:'inline-block',
+    marginLeft:'-16pt'
   }
+  
 }));
 
 interface Introduction {
@@ -129,11 +131,8 @@ export const Intro: React.FC = () => {
           </label>
         ))}
       </div>
-      <div className={classes.btn}>
-        <div className={classes.btnContent}>Start</div>
-        <div className={classes.btnContent}>
-          <img src={'/assets/imgs/next.png'}/>
-        </div>
+      <div className={classes.btn}>    
+        <span className={classes.btnTxt}> Start</span>
       </div>
     </div>
   );

@@ -24,7 +24,7 @@ export const ContractContextProvider: FC = props => {
           honestAsset: '1,403,563,535',
           basketAssets: {'dai': 1,'usdt': 0.25,'usdc': 0.5, 'tusd': 0.75 }
         });
-      }, 3000)
+      }, 10000)
     );
   };
 

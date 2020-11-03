@@ -10,15 +10,39 @@ export interface HusdBalanceProps extends ComponentProps {}
 const useStyles = createUseStyles<HonestTheme>((theme) => ({
 	root: {
 		marginTop: `${theme.spacing(22)}pt`,
-		textAlign:'left'
+		textAlign: "left",
 	},
 	title: {
 		marginBottom: `${theme.spacing(8)}pt`,
-		fontSize:'26pt'
+		fontSize: "26pt",
 	},
 	val: {
 		fontSize: "70pt",
 		borderBottom: `3px solid ${theme.palette.textBlue}`,
+	},
+	loadingWrapper:{
+		width: "600pt",
+		height: "70pt",
+		borderBottom: `3px solid ${theme.palette.textBlue}`,
+	},
+	loading: {
+		width: "500px",
+		height: "40px",
+		backgroundImage: `linear-gradient( 100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 80% ),
+		linear-gradient( lightgray 40px, transparent 0 ),
+		linear-gradient( lightgray 40px, transparent 0 ),
+		linear-gradient( lightgray 40px, transparent 0 ),
+		linear-gradient( lightgray 40px, transparent 0 )`,
+		backgroundRepeat: "repeat-y",
+		backgroundSize: `50px 40px,500px 40px`,
+		backgroundPosition: `0 0,0 0`,
+
+		animation: "$shine 1s infinite",
+	},
+	"@keyframes shine": {
+		to: {
+			backgroundPosition: `100% 0,0 0`,
+		},
 	},
 }));
 
@@ -36,14 +60,19 @@ const Content: FC = () => {
 	const contract = useContract();
 	return (
 		<div>
-			{contract.loading ? (
-				<p></p>
-			) : (
-				<div className={classes.root}>
-					<div className={classes.title}>{title}</div>
-					<label className={classes.val}>{contract.honestAsset}</label>
-				</div>
-			)}
+			<div className={classes.root}>
+				<div className={classes.title}>{title}</div>
+				{contract.loading ? (
+					<div className={classes.loadingWrapper}>
+						<p className={classes.loading}></p>
+					</div>
+					
+				) : (
+					<label className={classes.val}>
+						{contract.honestAsset}
+					</label>
+				)}
+			</div>
 		</div>
 	);
 };

@@ -4,22 +4,17 @@
 }
 
 body {
-    background: #000;
+    background: #fff;
 }
 
 #root {
     text-align: center;
+    width:100%;
 }
 
-#root img {
-    display: block;
-    overflow: hidden;
-    margin: 240px auto 0 auto;
+@media (max-width: 1200px){
+    #root{
+        width: 1200px
+    }
 }
 
-#root.pc img {
-}
-
-#root.mobile img {
-    width: 70%;
-}

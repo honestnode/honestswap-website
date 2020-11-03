@@ -13,8 +13,7 @@ interface ItemProps extends ComponentProps {
 const useStyles = createUseStyles<HonestTheme>((theme) => ({
 	root: {
 		marginTop: `${theme.spacing(48)}px`,
-		textAlign:'left',
-		fontSize:'16pt'
+		textAlign:'left',	
 	},
 	ul: {
 		listStyle: "none",
@@ -24,7 +23,9 @@ const useStyles = createUseStyles<HonestTheme>((theme) => ({
 	li: {
 		display: "inline-block",
 		marginRight: `${theme.spacing(12)}pt`,
-		textDecoration:'none'
+		textDecoration:'none',
+		fontFamily: theme.palette.fontFamily,
+		fontSize: theme.palette.fontSizeTxt,
 	},
 	logo:{
 		float:'right',
@@ -42,6 +43,11 @@ const useStyles = createUseStyles<HonestTheme>((theme) => ({
 	email: {
 		color: theme.palette.textBlue,
 	},
+	"@media (max-width: 1200px)": {
+		li: {	
+			marginRight: `${theme.spacing(4)}pt`,
+		},
+	  },
 }));
 
 const Item: React.FC<ItemProps> = (props) => {

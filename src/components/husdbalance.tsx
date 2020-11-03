@@ -14,10 +14,12 @@ const useStyles = createUseStyles<HonestTheme>((theme) => ({
 	},
 	title: {
 		marginBottom: `${theme.spacing(8)}pt`,
-		fontSize: "26pt",
+		fontSize: theme.palette.fontSizeTxt,
+    	fontFamily: theme.palette.fontFamily,
 	},
 	val: {
-		fontSize: "70pt",
+		fontSize: theme.palette.fontSizeTitle,
+    	fontFamily: theme.palette.fontFamily,
 		borderBottom: `3px solid ${theme.palette.textBlue}`,
 	},
 	loadingWrapper:{

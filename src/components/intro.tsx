@@ -7,10 +7,10 @@ const useStyles = createUseStyles<HonestTheme>((theme) => ({
     '0%': {
       transform: 'translateY(100%)'
     },
-    '20%': {
+    '15%': {
       transform: 'translateY(0px)'
     },
-    '90%': {
+    '85%': {
       transform: 'translateY(0px)'
     },
     '100%': {
@@ -28,7 +28,8 @@ const useStyles = createUseStyles<HonestTheme>((theme) => ({
     width: 'auto',
     overflowY: 'hidden',
     maxWidth: `925pt`,
-    fontSize: '60pt',
+    fontSize: theme.palette.fontSizeTitle,
+    fontFamily: theme.palette.fontFamily,
     borderBottom: `3px solid ${theme.palette.textBlue}`,
     lineHeight: '1.3em',
     display: 'inline-block'
@@ -52,8 +53,9 @@ const useStyles = createUseStyles<HonestTheme>((theme) => ({
     border: `3px solid ${theme.palette.textBlue}`,
     boxSizing:'content-box',
     color: theme.palette.text,
+    fontSize: theme.palette.fontSizeTxt,
+    fontFamily: theme.palette.fontFamily,
     textAlign: 'center',
-    fontSize: '26pt',
     background:'url("/assets/imgs/next.png") 70% center no-repeat',
     '&:hover': {
       backgroundColor: theme.palette.textBlue,

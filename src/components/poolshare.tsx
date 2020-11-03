@@ -14,7 +14,8 @@ const useStyles = createUseStyles<HonestTheme>((theme) => ({
 	},
 	title: {
 		marginBottom: `${theme.spacing(12)}pt`,
-		fontSize: "26pt",
+		fontSize: theme.palette.fontSizeTxt,
+    	fontFamily: theme.palette.fontFamily,
 	},
 	ul: {
 		listStyle: "none",
@@ -28,7 +29,8 @@ const useStyles = createUseStyles<HonestTheme>((theme) => ({
 	percentTxt: {
 		display: "block",
 		marginTop: `${theme.spacing(4)}pt`,
-		fontSize: "14pt",
+		fontSize: theme.palette.fontSizeTxt,
+    	fontFamily: theme.palette.fontFamily,
 	},
 }));
 

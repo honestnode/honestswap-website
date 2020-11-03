@@ -9,9 +9,12 @@ export interface HonestPalette {
   underline: string;
   text: string;
   textBlue: string;
-  yellow:string;
-    green:string;
-    blue:string;
+  yellow: string;
+  green: string;
+  blue: string;
+  fontFamily: string;
+  fontSizeTxt: string;
+  fontSizeTitle: string;
   token: (name: string) => string;
 }
 
@@ -28,9 +31,12 @@ export const theme: HonestTheme = {
     underline: "#0099ff",
     text: "#1d1d1d",
     textBlue: "#0099ff",
-    yellow:'#ffce45',
-    green:'#53ae94',
-    blue:'#2775ca',
+    yellow: "#ffce45",
+    green: "#53ae94",
+    blue: "#2775ca",
+    fontFamily: "Roboto Medium",
+    fontSizeTxt: "26pt",
+    fontSizeTitle: "60pt",
     token: (name) => {
       const themed: Record<string, string> = {
         husd: "#f0f0f0",
@@ -45,7 +51,7 @@ export const theme: HonestTheme = {
     },
   },
   typography: {
-    fontFamily: "Verdana,Helvetica,sans-serif,serif",
+    fontFamily: " PingFangSC-Medium,Verdana,Helvetica,sans-serif,serif",
     fontSize: 16,
     buttonFontSize: 14,
   },

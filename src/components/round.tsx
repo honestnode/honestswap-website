@@ -13,7 +13,7 @@ const useStyles = createUseStyles<HonestTheme>((theme) => ({
 		background: theme.palette.yellow,
 		position: "absolute",
 		top: "-1505pt",
-		right: "-900pt",
+		right: "-925pt",
 	},
 	shadowYellow: {
 		background: theme.palette.yellow,
@@ -25,8 +25,8 @@ const useStyles = createUseStyles<HonestTheme>((theme) => ({
 		borderRadius: "50%",
 		background: theme.palette.green,
 		position: "absolute",
-		top: "-500pt",
-		right: "-940pt",
+		top: "-504pt",
+		right: "-857pt",
 	},
 	shadowGreen: {
 		background: theme.palette.green,
